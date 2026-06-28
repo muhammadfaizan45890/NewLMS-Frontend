@@ -1,3 +1,3 @@
-const API = "http://localhost:8000";
+const API = "newlms-backend-production.up.railway.app";
 
 export default API;

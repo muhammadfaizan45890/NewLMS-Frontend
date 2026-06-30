@@ -1,4 +1,4 @@
-const API = "https://lms-backend-production-1c87.up.railway.app";
+const API = "lms-courseacademy.up.railway.app";
 export default API;
 
 

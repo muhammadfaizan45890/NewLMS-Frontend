@@ -23,13 +23,12 @@ const Middle = () => {
   const userId = localStorage.getItem("userId");
 
   const handleNavigation = () => {
-
+    // ✅ If userId exists → go to courses, else → login
     if (userId) {
       navigate("/courses");
     } else {
       navigate("/login");
     }
-
   };
 
   // ================= HOW LMS WORKS =================

@@ -1,4 +1,4 @@
-const API = "lms-courseacademy.up.railway.app";
+const API = "https://lms-courseacademy.up.railway.app";
 export default API;
 
 

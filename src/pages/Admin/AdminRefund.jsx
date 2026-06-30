@@ -12,6 +12,7 @@ import {
   GraduationCap,
   BadgeDollarSign,
   RefreshCcw,
+  Mail, // 👈 imported
 } from "lucide-react";
 import API from "../../utils/api";
 
@@ -70,19 +71,16 @@ const AdminRefund = () => {
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_right,white,transparent_35%)]" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-10 sm:py-16 lg:py-20">
           <div className="max-w-4xl">
-            {/* BADGE */}
             <div className="inline-flex items-center gap-2 bg-white/10 border border-white/10 backdrop-blur-xl px-3 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm mb-5 sm:mb-8">
               <Sparkles size={14} />
               Refund Management System
             </div>
-            {/* HEADING */}
             <h1 className="text-2xl sm:text-4xl lg:text-7xl font-black leading-tight tracking-tight">
               Admin Refund Panel
               <span className="block text-zinc-400 mt-1 sm:mt-2 text-base sm:text-lg lg:text-xl">
                 Manage Student Refund Requests
               </span>
             </h1>
-            {/* DESC */}
             <p className="mt-4 sm:mt-8 text-zinc-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl">
               Review refund requests, approve or reject student
               submissions, and manage refund activities securely.
@@ -96,7 +94,6 @@ const AdminRefund = () => {
         <div className="max-w-7xl mx-auto">
           {/* ================= TOP BAR ================= */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 sm:gap-5 mb-6 sm:mb-10">
-            {/* LEFT */}
             <div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-black">
                 Refund Requests
@@ -105,7 +102,6 @@ const AdminRefund = () => {
                 Track and manage all student refund requests.
               </p>
             </div>
-            {/* SEARCH */}
             <div className="relative w-full lg:w-[400px]">
               <Search
                 size={16}
@@ -133,7 +129,6 @@ const AdminRefund = () => {
 
           {/* ================= STATS ================= */}
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-10">
-            {/* TOTAL */}
             <div className="bg-white border border-zinc-200 rounded-2xl sm:rounded-[30px] p-4 sm:p-6">
               <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-black text-white flex items-center justify-center">
                 <Wallet size={20} />
@@ -145,7 +140,6 @@ const AdminRefund = () => {
                 Total Requests
               </p>
             </div>
-            {/* APPROVED */}
             <div className="bg-white border border-zinc-200 rounded-2xl sm:rounded-[30px] p-4 sm:p-6">
               <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-green-600 text-white flex items-center justify-center">
                 <CheckCircle2 size={20} />
@@ -157,7 +151,6 @@ const AdminRefund = () => {
                 Approved
               </p>
             </div>
-            {/* REJECTED */}
             <div className="bg-white border border-zinc-200 rounded-2xl sm:rounded-[30px] p-4 sm:p-6">
               <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-red-600 text-white flex items-center justify-center">
                 <XCircle size={20} />
@@ -169,7 +162,6 @@ const AdminRefund = () => {
                 Rejected
               </p>
             </div>
-            {/* PENDING */}
             <div className="bg-white border border-zinc-200 rounded-2xl sm:rounded-[30px] p-4 sm:p-6">
               <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-yellow-500 text-white flex items-center justify-center">
                 <Clock3 size={20} />
@@ -216,9 +208,16 @@ const AdminRefund = () => {
                       <h2 className="text-lg sm:text-2xl font-black text-black break-words">
                         {item.courseTitle}
                       </h2>
-                      <div className="flex items-center gap-2 mt-2 sm:mt-4 text-zinc-500 text-sm sm:text-base">
-                        <Users size={14} />
-                        <span>{item.userId?.username || "Student"}</span>
+                      {/* USER INFO – name + email */}
+                      <div className="mt-2 sm:mt-4 space-y-1">
+                        <div className="flex items-center gap-2 text-zinc-500 text-sm sm:text-base">
+                          <Users size={14} />
+                          <span>{item.userId?.username || "Student"}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-zinc-500 text-sm sm:text-base">
+                          <Mail size={14} />
+                          <span>{item.userId?.email || "No email"}</span>
+                        </div>
                       </div>
                     </div>
                     {/* STATUS */}
@@ -260,7 +259,6 @@ const AdminRefund = () => {
                   {/* ACTIONS */}
                   {item.status === "pending" && (
                     <div className="grid grid-cols-2 gap-2 sm:gap-4 mt-5 sm:mt-8">
-                      {/* APPROVE */}
                       <button
                         onClick={() => updateStatus(item._id, "approved")}
                         disabled={updatingId === item._id}
@@ -282,7 +280,6 @@ const AdminRefund = () => {
                           "Approve"
                         )}
                       </button>
-                      {/* REJECT */}
                       <button
                         onClick={() => updateStatus(item._id, "rejected")}
                         disabled={updatingId === item._id}

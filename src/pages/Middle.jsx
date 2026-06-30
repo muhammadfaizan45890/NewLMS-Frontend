@@ -25,7 +25,7 @@ const Middle = () => {
   const handleNavigation = () => {
 
     if (userId) {
-      navigate("/user/dashboard");
+      navigate("/courses");
     } else {
       navigate("/login");
     }

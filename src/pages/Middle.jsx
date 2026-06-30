@@ -18,27 +18,27 @@ const Middle = () => {
     {
       title: "Create Account",
       desc: "Signup and verify your email to access the LMS platform.",
-      icon: <User size={26} />,
+      icon: <User size={22} />,
     },
     {
       title: "Enroll In Courses",
       desc: "Browse available courses and enroll to start learning.",
-      icon: <BookOpen size={26} />,
+      icon: <BookOpen size={22} />,
     },
     {
       title: "Watch Video Lectures",
       desc: "Access course modules and watch secure embedded videos.",
-      icon: <Video size={26} />,
+      icon: <Video size={22} />,
     },
     {
       title: "Track Progress",
       desc: "Monitor your active courses and continue your learning journey.",
-      icon: <CheckCircle2 size={26} />,
+      icon: <CheckCircle2 size={22} />,
     },
     {
       title: "Get Certificate",
       desc: "Receive a professional certificate after completing your course successfully.",
-      icon: <Award size={26} />,
+      icon: <Award size={22} />,
     },
   ];
 
@@ -47,27 +47,27 @@ const Middle = () => {
     {
       title: "Student Dashboard",
       desc: "Manage enrolled courses, profile, and progress from one place.",
-      icon: <LayoutDashboard size={28} />,
+      icon: <LayoutDashboard size={24} />,
     },
     {
       title: "Secure Video Learning",
       desc: "Protected course videos with custom playback controls.",
-      icon: <PlayCircle size={28} />,
+      icon: <PlayCircle size={24} />,
     },
     {
       title: "Admin Management",
       desc: "Admins can create courses, modules, and manage users easily.",
-      icon: <ShieldCheck size={28} />,
+      icon: <ShieldCheck size={24} />,
     },
     {
       title: "Course Certificates",
       desc: "Students receive digital certificates after successfully completing courses.",
-      icon: <Award size={28} />,
+      icon: <Award size={24} />,
     },
     {
       title: "Responsive Design",
       desc: "Fully optimized for mobile, tablet, and desktop devices.",
-      icon: <Sparkles size={28} />,
+      icon: <Sparkles size={24} />,
     },
   ];
 
@@ -112,23 +112,23 @@ const Middle = () => {
       </div>
 
       {/* ================= HERO SECTION ================= */}
-      <section className="relative animated-bg text-white px-4 sm:px-6 lg:px-10 py-20 lg:py-32">
-        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+      <section className="relative animated-bg text-white px-4 sm:px-6 lg:px-10 py-16 lg:py-24">
+        <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
           {/* LEFT */}
           <div>
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-5 py-2 text-sm font-medium mb-6 backdrop-blur-md">
-              <GraduationCap size={18} />
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-xs font-medium mb-4 backdrop-blur-md">
+              <GraduationCap size={14} />
               LMS Learning Platform Guide
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight tracking-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-5xl font-black leading-tight tracking-tight">
               Learn Smarter
-              <span className="block text-zinc-400 mt-2">
+              <span className="block text-zinc-400 mt-1">
                 With Our LMS Platform
               </span>
             </h1>
 
-            <p className="text-zinc-300 text-lg mt-8 leading-relaxed max-w-2xl">
+            <p className="text-zinc-300 text-sm sm:text-base mt-4 leading-relaxed max-w-2xl">
               Access courses, watch secure video lectures, track your learning
               progress, and earn professional certificates after completion.
             </p>
@@ -138,37 +138,37 @@ const Middle = () => {
 
           {/* RIGHT – Dashboard preview */}
           <div className="relative flex justify-center">
-            <div className="w-full max-w-2xl rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-xl p-5 shadow-[0_0_80px_rgba(255,255,255,0.08)]">
-              <div className="bg-zinc-900 rounded-[30px] p-6 border border-white/10">
-                <div className="flex items-center justify-between mb-6">
+            <div className="w-full max-w-2xl rounded-[30px] border border-white/10 bg-white/5 backdrop-blur-xl p-4 shadow-[0_0_60px_rgba(255,255,255,0.06)]">
+              <div className="bg-zinc-900 rounded-[24px] p-5 border border-white/10">
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="text-2xl font-bold">Student Dashboard</h3>
-                    <p className="text-zinc-400 mt-1">Modern LMS Interface</p>
+                    <h3 className="text-lg font-bold">Student Dashboard</h3>
+                    <p className="text-zinc-400 text-xs mt-0.5">Modern LMS Interface</p>
                   </div>
-                  <div className="w-14 h-14 rounded-2xl bg-white text-black flex items-center justify-center">
-                    <LayoutDashboard size={28} />
+                  <div className="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center">
+                    <LayoutDashboard size={20} />
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-black rounded-2xl p-5 border border-white/10">
-                    <BookOpen className="mb-4 text-white" size={28} />
-                    <h4 className="font-bold text-xl">Courses</h4>
-                    <p className="text-zinc-400 text-sm mt-2">Access enrolled courses instantly.</p>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="bg-black rounded-xl p-4 border border-white/10">
+                    <BookOpen className="mb-2 text-white" size={22} />
+                    <h4 className="font-bold text-base">Courses</h4>
+                    <p className="text-zinc-400 text-xs mt-1">Access enrolled courses instantly.</p>
                   </div>
-                  <div className="bg-black rounded-2xl p-5 border border-white/10">
-                    <PlayCircle className="mb-4 text-white" size={28} />
-                    <h4 className="font-bold text-xl">Videos</h4>
-                    <p className="text-zinc-400 text-sm mt-2">Secure embedded video lectures.</p>
+                  <div className="bg-black rounded-xl p-4 border border-white/10">
+                    <PlayCircle className="mb-2 text-white" size={22} />
+                    <h4 className="font-bold text-base">Videos</h4>
+                    <p className="text-zinc-400 text-xs mt-1">Secure embedded video lectures.</p>
                   </div>
-                  <div className="bg-black rounded-2xl p-5 border border-white/10">
-                    <Award className="mb-4 text-yellow-400" size={28} />
-                    <h4 className="font-bold text-xl">Certificates</h4>
-                    <p className="text-zinc-400 text-sm mt-2">Earn certificates after completion.</p>
+                  <div className="bg-black rounded-xl p-4 border border-white/10">
+                    <Award className="mb-2 text-yellow-400" size={22} />
+                    <h4 className="font-bold text-base">Certificates</h4>
+                    <p className="text-zinc-400 text-xs mt-1">Earn certificates after completion.</p>
                   </div>
-                  <div className="bg-black rounded-2xl p-5 border border-white/10">
-                    <ShieldCheck className="mb-4 text-blue-500" size={28} />
-                    <h4 className="font-bold text-xl">Security</h4>
-                    <p className="text-zinc-400 text-sm mt-2">Protected access and user roles.</p>
+                  <div className="bg-black rounded-xl p-4 border border-white/10">
+                    <ShieldCheck className="mb-2 text-blue-500" size={22} />
+                    <h4 className="font-bold text-base">Security</h4>
+                    <p className="text-zinc-400 text-xs mt-1">Protected access and user roles.</p>
                   </div>
                 </div>
               </div>
@@ -178,26 +178,26 @@ const Middle = () => {
       </section>
 
       {/* ================= HOW IT WORKS ================= */}
-      <section className="relative px-4 sm:px-6 lg:px-10 py-20 bg-zinc-100">
+      <section className="relative px-4 sm:px-6 lg:px-10 py-16 bg-zinc-100">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-black">How LMS Works</h2>
-            <p className="text-zinc-600 mt-5 max-w-2xl mx-auto text-lg">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl font-black text-black">How LMS Works</h2>
+            <p className="text-zinc-600 mt-3 max-w-2xl mx-auto text-sm sm:text-base">
               Follow these simple steps to start learning on the platform.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-7">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-5">
             {studentSteps.map((step, index) => (
               <div
                 key={index}
-                className="bg-white rounded-[30px] p-8 border border-zinc-200 shadow-sm"
+                className="bg-white rounded-2xl p-6 border border-zinc-200 shadow-sm"
               >
-                <div className="w-16 h-16 rounded-2xl bg-black text-white flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-xl bg-black text-white flex items-center justify-center mb-4">
                   {step.icon}
                 </div>
-                <div className="text-sm font-bold text-zinc-400 mb-3">STEP {index + 1}</div>
-                <h3 className="text-2xl font-bold text-black mb-4">{step.title}</h3>
-                <p className="text-zinc-600 leading-relaxed">{step.desc}</p>
+                <div className="text-xs font-bold text-zinc-400 mb-2">STEP {index + 1}</div>
+                <h3 className="text-lg font-bold text-black mb-2">{step.title}</h3>
+                <p className="text-zinc-600 text-sm leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -205,25 +205,25 @@ const Middle = () => {
       </section>
 
       {/* ================= FEATURES ================= */}
-      <section className="relative bg-white px-4 sm:px-6 lg:px-10 py-20 border-y border-zinc-200">
+      <section className="relative bg-white px-4 sm:px-6 lg:px-10 py-16 border-y border-zinc-200">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-black">Powerful LMS Features</h2>
-            <p className="text-zinc-600 mt-5 max-w-2xl text-lg">
+          <div className="mb-12">
+            <h2 className="text-2xl sm:text-3xl font-black text-black">Powerful LMS Features</h2>
+            <p className="text-zinc-600 mt-3 max-w-2xl text-sm sm:text-base">
               Everything you need for a modern online learning experience.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="rounded-[35px] border border-zinc-200 p-8 bg-zinc-50"
+                className="rounded-2xl border border-zinc-200 p-6 bg-zinc-50"
               >
-                <div className="w-16 h-16 rounded-2xl bg-black text-white flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-xl bg-black text-white flex items-center justify-center mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-3xl font-bold text-black mb-4">{feature.title}</h3>
-                <p className="text-zinc-600 leading-relaxed text-lg">{feature.desc}</p>
+                <h3 className="text-xl font-bold text-black mb-2">{feature.title}</h3>
+                <p className="text-zinc-600 text-sm leading-relaxed">{feature.desc}</p>
               </div>
             ))}
           </div>
@@ -231,14 +231,14 @@ const Middle = () => {
       </section>
 
       {/* ================= CTA – No button ================= */}
-      <section className="relative px-4 sm:px-6 lg:px-10 py-20">
-        <div className="max-w-6xl mx-auto bg-black rounded-[40px] p-10 sm:p-14 text-center text-white relative overflow-hidden">
+      <section className="relative px-4 sm:px-6 lg:px-10 py-16">
+        <div className="max-w-6xl mx-auto bg-black rounded-[30px] p-8 sm:p-10 text-center text-white relative overflow-hidden">
           <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_left,white,transparent_40%)]" />
           <div className="relative">
-            <h2 className="text-4xl sm:text-5xl font-black leading-tight">
+            <h2 className="text-2xl sm:text-3xl font-black leading-tight">
               Ready To Start Learning?
             </h2>
-            <p className="text-zinc-300 mt-6 max-w-2xl mx-auto text-lg leading-relaxed">
+            <p className="text-zinc-300 mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
               Join the LMS platform today and unlock modern learning with
               interactive courses, secure videos, and completion certificates.
             </p>

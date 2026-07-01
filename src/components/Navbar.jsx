@@ -134,7 +134,7 @@ const Navbar = () => {
               <span className="font-bold text-[1.1rem] tracking-wide block">
                 
                 <span className="text-black">Course</span>
-                <span className="text-gray-700"> Academy</span>
+                <span className="text-gray-700">Academy</span>
               </span>
             </Link>
           </div>

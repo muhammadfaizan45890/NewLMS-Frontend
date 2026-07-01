@@ -82,6 +82,7 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import API from "@/utils/api";
+import { FaGraduationCap } from "react-icons/fa"; // ← install react-icons if not already
 
 export const UserContext = createContext(null);
 
@@ -126,39 +127,48 @@ export const UserProvider = ({ children }) => {
     loadUser();
   }, [loadUser]);
 
-  // ---------- COURSE ACADEMY LOADING SCREEN ----------
+  // ---------- LOADING SCREEN: Graduation Cap with Spinning Ring ----------
   if (loading) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
-        <div className="text-center">
-          {/* Brand / Academy Name */}
-          <div className="mb-6">
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
+        <div className="text-center max-w-sm mx-auto px-4">
+          {/* Brand Name */}
+          <div className="mb-8">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
               Course<span className="text-blue-600">Academy</span>
             </h1>
-            <p className="text-sm text-gray-500 mt-1">Learn. Grow. Succeed.</p>
+            <p className="text-xs sm:text-sm text-gray-500 mt-1 tracking-wider uppercase">
+              Learn. Grow. Succeed.
+            </p>
           </div>
 
-          {/* Clean Spinner (gray/blue theme) */}
-          <div className="relative w-16 h-16 mx-auto">
-            {/* Outer ring */}
-            <div className="absolute inset-0 border-4 border-gray-200 rounded-full"></div>
-            {/* Spinning gradient ring (blue) */}
-            <div className="absolute inset-0 border-4 border-t-transparent border-r-transparent border-blue-600 rounded-full animate-spin"></div>
-            {/* Inner dot */}
+          {/* Graduation Cap with Spinning Ring */}
+          <div className="relative w-24 h-24 mx-auto">
+            {/* Outer spinning ring (blue gradient) */}
+            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-blue-600 border-r-blue-400 border-b-blue-600 border-l-blue-400 animate-spin"></div>
+            
+            {/* Inner static ring (light gray) */}
+            <div className="absolute inset-2 rounded-full border-2 border-gray-200"></div>
+            
+            {/* Graduation Cap Icon */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-2.5 h-2.5 bg-blue-600 rounded-full animate-pulse"></div>
+              <FaGraduationCap className="w-12 h-12 text-blue-600 animate-pulse" />
             </div>
           </div>
 
           {/* Loading text with animated dots */}
-          <p className="mt-6 text-gray-700 font-medium text-sm md:text-base">
+          <p className="mt-6 text-gray-700 font-medium text-sm sm:text-base">
             Loading
             <span className="inline-flex gap-1 ml-1">
               <span className="animate-bounce delay-0">.</span>
               <span className="animate-bounce delay-150">.</span>
               <span className="animate-bounce delay-300">.</span>
             </span>
+          </p>
+
+          {/* Optional sub‑message */}
+          <p className="mt-2 text-xs text-gray-400">
+            Preparing your learning experience
           </p>
         </div>
       </div>

@@ -239,7 +239,6 @@
 
 
 
-
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
@@ -282,6 +281,23 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const accessToken = localStorage.getItem('accessToken');
   const userRole = user?.role || 'user';
+
+  // Inject shimmer keyframe animation
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes shimmer {
+        0% { background-position: -200% center; }
+        100% { background-position: 200% center; }
+      }
+      .animate-shimmer {
+        animation: shimmer 4s linear infinite;
+        background-size: 200% auto;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
 
   // Scroll effect
   useEffect(() => {
@@ -364,15 +380,31 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-[62px] gap-3">
 
-          {/* Left: logo (static, no animations) */}
+          {/* Left: logo with text shimmer, cap static */}
           <div className="flex items-center gap-1 shrink-0">
             <Link to="/" className="flex items-center gap-2.5 group">
+              {/* Graduation cap – static, no animation */}
               <div className="bg-black text-white p-2 rounded-full">
                 <GraduationCap size={20} />
               </div>
+              {/* Animated text – shimmer only */}
               <span className="font-bold text-[1.1rem] tracking-wide block">
-                <span className="text-black">Course</span>
-                <span className="text-gray-700">Academy</span>
+                <span
+                  className="
+                    bg-gradient-to-r from-black via-gray-400 to-black
+                    bg-clip-text text-transparent animate-shimmer
+                  "
+                >
+                  Course
+                </span>
+                <span
+                  className="
+                    bg-gradient-to-r from-gray-700 via-gray-300 to-gray-700
+                    bg-clip-text text-transparent animate-shimmer
+                  "
+                >
+                  Academy
+                </span>
               </span>
             </Link>
           </div>

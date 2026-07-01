@@ -241,12 +241,11 @@
 
 
 import { useState, useEffect, useMemo, useRef } from 'react';
-import { Link, useNavigate, NavLink, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
-  LayoutDashboard, Users, Home, Menu, X, LogOut, User,
+  LayoutDashboard, Home, LogOut, User,
   ChevronDown, Shield, BarChart3, UsersRound,
-  Eye, Lock, Map,
-  GraduationCap, LogIn, UserPlus
+  Map, GraduationCap, LogIn, UserPlus
 } from 'lucide-react';
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem,
@@ -283,6 +282,30 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const accessToken = localStorage.getItem('accessToken');
   const userRole = user?.role || 'user';
+
+  // Inject custom keyframe animations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-6px); }
+      }
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+      @keyframes shimmer {
+        0% { background-position: -200% center; }
+        100% { background-position: 200% center; }
+      }
+      .animate-shimmer {
+        animation: shimmer 3s linear infinite;
+        background-size: 200% auto;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
 
   // Scroll effect
   useEffect(() => {
@@ -365,15 +388,35 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-[62px] gap-3">
 
-          {/* Left: logo only (no menu toggle) */}
+          {/* Left: Animated Logo */}
           <div className="flex items-center gap-1 shrink-0">
             <Link to="/" className="flex items-center gap-2.5 group">
-              <div className=" bg-black text-white p-2 rounded-full">
-                <GraduationCap size={20} />
+              {/* Graduation cap with 3D flip & float */}
+              <div
+                className="
+                  bg-black text-white p-2 rounded-full
+                  transition-all duration-700 ease-out
+                  group-hover:rotate-y-180 group-hover:scale-110
+                  shadow-lg group-hover:shadow-2xl
+                  perspective-500 [transform-style:preserve-3d]
+                "
+              >
+                <GraduationCap size={20} className="animate-float" />
               </div>
+              {/* Shimmer text */}
               <span className="font-bold text-[1.1rem] tracking-wide block">
-                <span className="text-black">Course</span>
-                <span className="text-gray-700">Academy</span>
+                <span className="
+                  bg-gradient-to-r from-black via-gray-400 to-black
+                  bg-clip-text text-transparent animate-shimmer
+                ">
+                  Course
+                </span>
+                <span className="
+                  bg-gradient-to-r from-gray-700 via-gray-300 to-gray-700
+                  bg-clip-text text-transparent animate-shimmer
+                ">
+                  Academy
+                </span>
               </span>
             </Link>
           </div>
@@ -460,7 +503,6 @@ const Navbar = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              // 👇 NEW: user icon dropdown with Login / Signup
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button
@@ -497,7 +539,7 @@ const Navbar = () => {
               </DropdownMenu>
             )}
           </div>
-        </div>    
+        </div>
       </div>
     </nav>
   );

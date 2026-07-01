@@ -439,7 +439,22 @@ const getVideoId = (url) => {
 const Video = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  
+  // ── We only read the URL once, then immediately discard it ──
   const youtubeUrl = location.state?.youtubeUrl;
+  const [videoId, setVideoId] = useState(null);
+
+  // Extract ID and clear the state from history so the URL is not stored
+  useEffect(() => {
+    const id = getVideoId(youtubeUrl);
+    setVideoId(id);
+    
+    // ── Remove the URL from browser history state ──
+    if (location.state?.youtubeUrl) {
+      // Replace current history entry with a clean state (no URL)
+      window.history.replaceState({}, document.title);
+    }
+  }, [youtubeUrl, location.state]);
 
   // ── Refs ──
   const playerRef = useRef(null);
@@ -447,7 +462,6 @@ const Video = () => {
   const intervalRef = useRef(null);
 
   // ── State ──
-  const [videoId, setVideoId] = useState(null);
   const [playerReady, setPlayerReady] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -457,12 +471,6 @@ const Video = () => {
   const [playbackRate, setPlaybackRate] = useState(1);
   const [quality, setQuality] = useState("default");
   const [isFullscreen, setIsFullscreen] = useState(false);
-
-  // ── Init video ID ──
-  useEffect(() => {
-    const id = getVideoId(youtubeUrl);
-    setVideoId(id);
-  }, [youtubeUrl]);
 
   // ── Timer: update current time every second ──
   useEffect(() => {

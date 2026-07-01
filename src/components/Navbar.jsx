@@ -133,8 +133,8 @@ const Navbar = () => {
               {/* "LMS" text – always visible */}
               <span className="font-bold text-[1.1rem] tracking-wide block">
                 
-                <span className="text-black"></span>
-                <span className="text-gray-700">LMS</span>
+                <span className="text-black">Course</span>
+                <span className="text-gray-700"> Academy</span>
               </span>
             </Link>
           </div>

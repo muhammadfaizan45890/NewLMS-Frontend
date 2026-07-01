@@ -82,7 +82,7 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import API from "@/utils/api";
-import { FaGraduationCap } from "react-icons/fa"; // ← install react-icons if not already
+import { GraduationCap } from "lucide-react"; // ← Lucide icon
 
 export const UserContext = createContext(null);
 
@@ -127,7 +127,7 @@ export const UserProvider = ({ children }) => {
     loadUser();
   }, [loadUser]);
 
-  // ---------- LOADING SCREEN: Graduation Cap with Spinning Ring ----------
+  // ---------- LOADING SCREEN WITH LUCIDE GRADUATION CAP ----------
   if (loading) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
@@ -150,9 +150,9 @@ export const UserProvider = ({ children }) => {
             {/* Inner static ring (light gray) */}
             <div className="absolute inset-2 rounded-full border-2 border-gray-200"></div>
             
-            {/* Graduation Cap Icon */}
+            {/* Graduation Cap Icon (Lucide) */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <FaGraduationCap className="w-12 h-12 text-blue-600 animate-pulse" />
+              <GraduationCap className="w-12 h-12 text-blue-600 animate-pulse" />
             </div>
           </div>
 

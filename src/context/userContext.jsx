@@ -82,7 +82,7 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import API from "@/utils/api";
-import { GraduationCap } from "lucide-react"; // ← Lucide icon
+import { GraduationCap } from "lucide-react";
 
 export const UserContext = createContext(null);
 
@@ -127,7 +127,7 @@ export const UserProvider = ({ children }) => {
     loadUser();
   }, [loadUser]);
 
-  // ---------- LOADING SCREEN WITH LUCIDE GRADUATION CAP ----------
+  // ---------- LOADING SCREEN (LIGHT GRAY THEME) ----------
   if (loading) {
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
@@ -135,24 +135,24 @@ export const UserProvider = ({ children }) => {
           {/* Brand Name */}
           <div className="mb-8">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
-              Course<span className="text-blue-600">Academy</span>
+              Course<span className="text-gray-700">Academy</span>
             </h1>
             <p className="text-xs sm:text-sm text-gray-500 mt-1 tracking-wider uppercase">
               Learn. Grow. Succeed.
             </p>
           </div>
 
-          {/* Graduation Cap with Spinning Ring */}
+          {/* Graduation Cap with Spinning Ring (Gray) */}
           <div className="relative w-24 h-24 mx-auto">
-            {/* Outer spinning ring (blue gradient) */}
-            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-blue-600 border-r-blue-400 border-b-blue-600 border-l-blue-400 animate-spin"></div>
+            {/* Outer spinning ring (gray gradient) */}
+            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-gray-600 border-r-gray-400 border-b-gray-600 border-l-gray-400 animate-spin"></div>
             
             {/* Inner static ring (light gray) */}
             <div className="absolute inset-2 rounded-full border-2 border-gray-200"></div>
             
-            {/* Graduation Cap Icon (Lucide) */}
+            {/* Graduation Cap Icon (Lucide) - Gray */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <GraduationCap className="w-12 h-12 text-blue-600 animate-pulse" />
+              <GraduationCap className="w-12 h-12 text-gray-600 animate-pulse" />
             </div>
           </div>
 

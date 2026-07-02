@@ -739,7 +739,6 @@
 
 
 
-
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -1332,35 +1331,37 @@ const UserProfile = () => {
               </div>
             </div>
 
-            {/* RECENT ENROLLMENTS */}
-            <div className="bg-white dark:bg-black rounded-2xl sm:rounded-[35px] border border-zinc-200 dark:border-zinc-800 p-4 sm:p-8 shadow-sm">
-              <div className="flex items-center justify-between mb-4 sm:mb-8">
+            {/* ================= RECENT ENROLLMENTS (COMPACT) ================= */}
+            <div className="bg-white dark:bg-black rounded-2xl sm:rounded-[35px] border border-zinc-200 dark:border-zinc-800 p-3 sm:p-6 shadow-sm">
+              <div className="flex items-center justify-between mb-3 sm:mb-6">
                 <div>
-                  <h2 className="text-xl sm:text-3xl font-black text-zinc-900 dark:text-white">Recent Enrollments</h2>
-                  <p className="text-zinc-500 dark:text-zinc-400 text-xs sm:text-base mt-1">Your latest learning activity</p>
+                  <h2 className="text-lg sm:text-2xl font-black text-zinc-900 dark:text-white">Recent Enrollments</h2>
+                  <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">Your latest learning activity</p>
                 </div>
               </div>
-              <div className="space-y-3 sm:space-y-5">
+              <div className="space-y-2 sm:space-y-3">
                 {enrollments.length > 0 ? (
                   enrollments.slice(0, 5).map((item) => (
                     <div
                       key={item._id}
-                      className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-5 border border-zinc-200 dark:border-zinc-800 rounded-xl sm:rounded-3xl p-3 sm:p-5 hover:shadow-lg transition-all group"
+                      className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 sm:gap-4 border border-zinc-200 dark:border-zinc-800 rounded-xl sm:rounded-2xl p-2 sm:p-4 hover:shadow-lg transition-all group"
                     >
                       <div className="flex items-start gap-2 sm:gap-4">
-                        <div className="w-10 h-10 sm:w-16 sm:h-16 rounded-lg sm:rounded-2xl bg-black text-white flex items-center justify-center group-hover:scale-105 transition-transform">
-                          <GraduationCap size={20} className="sm:w-7 sm:h-7" />
+                        <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-black text-white flex items-center justify-center group-hover:scale-105 transition-transform flex-shrink-0">
+                          <GraduationCap size={16} className="sm:w-5 sm:h-5" />
                         </div>
-                        <div>
-                          <h3 className="text-sm sm:text-xl font-bold text-zinc-900 dark:text-white">{item.courseId?.title || "Course"}</h3>
-                          <p className="text-zinc-500 dark:text-zinc-400 text-xs sm:text-base mt-1 line-clamp-1 sm:line-clamp-2">
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-xs sm:text-lg font-bold text-zinc-900 dark:text-white truncate">
+                            {item.courseId?.title || "Course"}
+                          </h3>
+                          <p className="text-[10px] sm:text-sm text-zinc-500 dark:text-zinc-400 mt-0.5 line-clamp-1 sm:line-clamp-2">
                             {item.courseId?.description?.slice(0, 60) || "No description"}...
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2 sm:gap-4 flex-wrap">
+                      <div className="flex items-center gap-2 sm:gap-4 flex-wrap flex-shrink-0">
                         <span
-                          className={`px-2 py-0.5 sm:px-4 sm:py-2 rounded-full text-[9px] sm:text-sm font-semibold ${
+                          className={`px-1.5 py-0.5 sm:px-3 sm:py-1.5 rounded-full text-[8px] sm:text-xs font-semibold ${
                             item.status === "active"
                               ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
                               : item.status === "pending"
@@ -1370,19 +1371,19 @@ const UserProfile = () => {
                         >
                           {item.status}
                         </span>
-                        <button className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-2xl bg-zinc-100 dark:bg-zinc-800 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black flex items-center justify-center transition-all hover:scale-110">
-                          <ChevronRight size={14} className="sm:w-5 sm:h-5" />
+                        <button className="w-6 h-6 sm:w-10 sm:h-10 rounded-lg sm:rounded-2xl bg-zinc-100 dark:bg-zinc-800 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black flex items-center justify-center transition-all hover:scale-110">
+                          <ChevronRight size={12} className="sm:w-4 sm:h-4" />
                         </button>
                       </div>
                     </div>
                   ))
                 ) : (
-                  <div className="text-center py-8 sm:py-14">
-                    <div className="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center mx-auto mb-3 sm:mb-6">
-                      <BookMarked size={28} className="sm:w-10 sm:h-10 text-zinc-500 dark:text-zinc-400" />
+                  <div className="text-center py-5 sm:py-10">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center mx-auto mb-2 sm:mb-4">
+                      <BookMarked size={20} className="sm:w-8 sm:h-8 text-zinc-500 dark:text-zinc-400" />
                     </div>
-                    <h3 className="text-lg sm:text-2xl font-black text-zinc-900 dark:text-white">No Courses Yet</h3>
-                    <p className="text-zinc-500 dark:text-zinc-400 text-sm sm:text-base mt-2">Enrolled courses will appear here</p>
+                    <h3 className="text-sm sm:text-xl font-black text-zinc-900 dark:text-white">No Courses Yet</h3>
+                    <p className="text-xs sm:text-base text-zinc-500 dark:text-zinc-400 mt-1">Enrolled courses will appear here</p>
                   </div>
                 )}
               </div>

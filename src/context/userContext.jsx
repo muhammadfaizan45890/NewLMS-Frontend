@@ -127,50 +127,47 @@ export const UserProvider = ({ children }) => {
     loadUser();
   }, [loadUser]);
 
-  // ---------- LOADING SCREEN (LIGHT GRAY THEME) ----------
+  // ===== CUSTOM LOADING SCREEN (MANUAL DESIGN) =====
   if (loading) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-white z-50">
-        <div className="text-center max-w-sm mx-auto px-4">
-          {/* Brand Name */}
-          <div className="mb-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
-              Course<span className="text-gray-700">Academy</span>
-            </h1>
-            <p className="text-xs sm:text-sm text-gray-500 mt-1 tracking-wider uppercase">
-              Learn. Grow. Succeed.
-            </p>
-          </div>
-
-          {/* Graduation Cap with Spinning Ring (Gray) */}
-          <div className="relative w-24 h-24 mx-auto">
-            {/* Outer spinning ring (gray gradient) */}
-            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-gray-600 border-r-gray-400 border-b-gray-600 border-l-gray-400 animate-spin"></div>
-            
-            {/* Inner static ring (light gray) */}
-            <div className="absolute inset-2 rounded-full border-2 border-gray-200"></div>
-            
-            {/* Graduation Cap Icon (Lucide) - Gray */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <GraduationCap className="w-12 h-12 text-gray-600 animate-pulse" />
-            </div>
-          </div>
-
-          {/* Loading text with animated dots */}
-          <p className="mt-6 text-gray-700 font-medium text-sm sm:text-base">
-            Loading
-            <span className="inline-flex gap-1 ml-1">
-              <span className="animate-bounce delay-0">.</span>
-              <span className="animate-bounce delay-150">.</span>
-              <span className="animate-bounce delay-300">.</span>
-            </span>
-          </p>
-
-          {/* Optional sub‑message */}
-          <p className="mt-2 text-xs text-gray-400">
-            Preparing your learning experience
+      <div className="fixed inset-0 flex flex-col items-center justify-center bg-white dark:bg-black z-50 transition-colors duration-300">
+        {/* Brand name */}
+        <div className="text-center mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+            Course<span className="text-gray-700 dark:text-gray-300">Academy</span>
+          </h1>
+          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1 tracking-wider uppercase">
+            Learn. Grow. Succeed.
           </p>
         </div>
+
+        {/* Spinning ring + Graduation Cap */}
+        <div className="relative w-24 h-24 mx-auto">
+          {/* Outer spinning ring (gray gradient) */}
+          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-gray-600 border-r-gray-400 border-b-gray-600 border-l-gray-400 dark:border-t-gray-300 dark:border-r-gray-400 dark:border-b-gray-300 dark:border-l-gray-400 animate-spin"></div>
+
+          {/* Inner static ring (light gray) */}
+          <div className="absolute inset-2 rounded-full border-2 border-gray-200 dark:border-gray-700"></div>
+
+          {/* Graduation Cap Icon */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <GraduationCap className="w-12 h-12 text-gray-600 dark:text-gray-300 animate-pulse" />
+          </div>
+        </div>
+
+        {/* Loading text with animated dots */}
+        <p className="mt-6 text-gray-700 dark:text-gray-300 font-medium text-sm sm:text-base">
+          Loading
+          <span className="inline-flex gap-1 ml-1">
+            <span className="animate-bounce delay-0">.</span>
+            <span className="animate-bounce delay-150">.</span>
+            <span className="animate-bounce delay-300">.</span>
+          </span>
+        </p>
+
+        <p className="mt-2 text-xs text-gray-400 dark:text-gray-500">
+          Preparing your learning experience
+        </p>
       </div>
     );
   }

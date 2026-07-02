@@ -767,7 +767,7 @@ const Hero = () => {
           role="alert"
           aria-live="polite"
         >
-          <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+          <div className="max-w-7xl mx-auto flex items-center justify-center gap-2">
             {/* Marquee container */}
             <div className="flex-1 min-w-0 marquee-container overflow-hidden">
               <div className="marquee-track text-red-800 text-xs sm:text-sm md:text-base font-medium">

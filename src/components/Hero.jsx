@@ -760,20 +760,19 @@ const Hero = () => {
         <GraduationCap className="w-96 h-96 text-black dark:text-white" strokeWidth={1} />
       </div>
 
-      {/* —————— SLIDING BANNER (at top of hero) —————— */}
+      {/* —————— UPDATED BANNER (centered & responsive) —————— */}
       {showHeroBanner && (
         <div
-          className="relative z-10 bg-gradient-to-r from-red-100 via-red-200/80 to-red-100 border-b border-red-300/50 py-1.5 px-2 sm:px-4"
+          className="relative z-10 bg-gradient-to-r from-red-100 via-red-200/80 to-red-100 border-b border-red-300/50 py-2 px-4 sm:px-6"
           role="alert"
           aria-live="polite"
         >
-          <div className="max-w-7xl mx-auto flex items-center justify-center gap-2">
-            {/* Marquee container */}
-            <div className="flex-1 min-w-0 marquee-container overflow-hidden">
-              <div className="marquee-track text-red-800 text-xs sm:text-sm md:text-base font-medium">
-                {/* Duplicate text for seamless loop */}
-                <span>⚠️ Signup is in repairing condition. Please use Sign in with Google for now. </span>
-              </div>
+          <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 sm:gap-4">
+            {/* Centered message */}
+            <div className="flex-1 text-center">
+              <span className="text-red-800 text-xs sm:text-sm md:text-base font-medium">
+                ⚠️ Signup is in repairing condition. Please use Sign in with Google for now.
+              </span>
             </div>
             {/* Close button */}
             <button

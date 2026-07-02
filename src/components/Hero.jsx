@@ -772,10 +772,7 @@ const Hero = () => {
             <div className="flex-1 min-w-0 marquee-container overflow-hidden">
               <div className="marquee-track text-red-800 text-xs sm:text-sm md:text-base font-medium">
                 {/* Duplicate text for seamless loop */}
-                <span>⚠️ Signup is in repairing condition. Please use Sign in with Google for now. &nbsp;&nbsp;—&nbsp;&nbsp; </span>
-                <span>⚠️ Signup is in repairing condition. Please use Sign in with Google for now. &nbsp;&nbsp;—&nbsp;&nbsp; </span>
-                <span>⚠️ Signup is in repairing condition. Please use Sign in with Google for now. &nbsp;&nbsp;—&nbsp;&nbsp; </span>
-                <span>⚠️ Signup is in repairing condition. Please use Sign in with Google for now. &nbsp;&nbsp;—&nbsp;&nbsp; </span>
+                <span>⚠️ Signup is in repairing condition. Please use Sign in with Google for now. </span>
               </div>
             </div>
             {/* Close button */}

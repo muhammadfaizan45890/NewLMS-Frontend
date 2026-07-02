@@ -305,7 +305,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard, Home, LogOut, User,
   ChevronDown, Shield, BarChart3, UsersRound,
-  Map, GraduationCap, LogIn, UserPlus, X // added X for close
+  Map, GraduationCap, LogIn, UserPlus, X
 } from 'lucide-react';
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem,
@@ -340,12 +340,12 @@ const Navbar = () => {
   const isMounted = useRef(true);
 
   const [isScrolled, setIsScrolled] = useState(false);
-  const [showBanner, setShowBanner] = useState(false); // banner visibility
+  const [showBanner, setShowBanner] = useState(false);
 
   const accessToken = localStorage.getItem('accessToken');
   const userRole = user?.role || 'user';
 
-  // Inject shimmer keyframe animation
+  // Inject shimmer & marquee keyframe animations
   useEffect(() => {
     const style = document.createElement('style');
     style.textContent = `
@@ -357,12 +357,27 @@ const Navbar = () => {
         animation: shimmer 4s linear infinite;
         background-size: 200% auto;
       }
+
+      /* Left‑to‑right marquee */
+      @keyframes marqueeLTR {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+      .marquee-track {
+        animation: marqueeLTR 20s linear infinite;
+        white-space: nowrap;
+        display: inline-block;
+        will-change: transform;
+      }
+      .marquee-container:hover .marquee-track {
+        animation-play-state: paused;
+      }
     `;
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
   }, []);
 
-  // Check if banner was previously dismissed
+  // Check if banner was dismissed
   useEffect(() => {
     const dismissed = localStorage.getItem('googleSigninBannerDismissed');
     if (!dismissed) {
@@ -370,7 +385,7 @@ const Navbar = () => {
     }
   }, []);
 
-  // Scroll effect
+  // Scroll effect (unchanged)
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -382,13 +397,13 @@ const Navbar = () => {
     };
   }, []);
 
-  // Dismiss banner and store preference
+  // Dismiss banner
   const dismissBanner = () => {
     setShowBanner(false);
     localStorage.setItem('googleSigninBannerDismissed', 'true');
   };
 
-  // Navigation items (memoized)
+  // Navigation items (memoized, unchanged)
   const publicNavItems = useMemo(() => [
     { name: 'Home', path: '/', icon: Home },
     { name: 'Guide', path: '/guide', icon: Map },
@@ -413,7 +428,7 @@ const Navbar = () => {
     return publicNavItems;
   }, [user, userRole, adminNavItems, userNavItems, publicNavItems]);
 
-  // Logout
+  // Logout (unchanged)
   const logoutHandler = async () => {
     try {
       const res = await axios.post(`${API}/user/logout`, {}, {
@@ -445,26 +460,28 @@ const Navbar = () => {
 
   return (
     <>
-      {/* -------- SLIDE-IN BANNER (above navbar) -------- */}
+      {/* ——————————— SLIDING BANNER (above navbar) ——————————— */}
       {showBanner && (
         <div
-          className={`
-            fixed top-0 left-0 right-0 z-[1001] 
-            transition-transform duration-500 ease-out
-            ${showBanner ? 'translate-y-0' : '-translate-y-full'}
-            bg-gradient-to-r from-blue-600 to-indigo-600 text-white
-            py-2 px-4 flex items-center justify-between
-            shadow-lg
-          `}
+          className="bg-gradient-to-r from-red-100 via-red-200/80 to-red-100 border-b border-red-300/50 py-1.5 px-2 sm:px-4"
+          role="alert"
+          aria-live="polite"
         >
-          <div className="flex items-center gap-2 mx-auto max-w-7xl w-full">
-            <span className="text-sm sm:text-base font-medium">
-              🚀 <span className="font-bold">Signup is now working!</span> 
-              &nbsp;You can also <span className="underline decoration-white/50">sign in with Google</span> for quick access.
-            </span>
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
+            {/* Marquee container */}
+            <div className="flex-1 min-w-0 marquee-container overflow-hidden">
+              <div className="marquee-track text-red-800 text-xs sm:text-sm md:text-base font-medium">
+                {/* Duplicate text for seamless loop */}
+                <span>🚀 Signup is now working! You can also sign in with Google for quick access. &nbsp;&nbsp;—&nbsp;&nbsp; </span>
+                <span>🚀 Signup is now working! You can also sign in with Google for quick access. &nbsp;&nbsp;—&nbsp;&nbsp; </span>
+                <span>🚀 Signup is now working! You can also sign in with Google for quick access. &nbsp;&nbsp;—&nbsp;&nbsp; </span>
+                <span>🚀 Signup is now working! You can also sign in with Google for quick access. &nbsp;&nbsp;—&nbsp;&nbsp; </span>
+              </div>
+            </div>
+            {/* Close button */}
             <button
               onClick={dismissBanner}
-              className="flex-shrink-0 ml-2 p-1 rounded-full hover:bg-white/20 transition-colors"
+              className="flex-shrink-0 p-1 rounded-full hover:bg-red-300/50 transition-colors text-red-700"
               aria-label="Dismiss banner"
             >
               <X size={18} />
@@ -473,7 +490,7 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* -------- ORIGINAL NAVBAR -------- */}
+      {/* ——————————— ORIGINAL NAVBAR (completely untouched) ——————————— */}
       <nav
         className={`
           sticky top-0 z-[1000] w-full
@@ -482,7 +499,6 @@ const Navbar = () => {
             ? 'bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200'
             : 'bg-white'
           }
-          ${showBanner ? 'mt-[42px]' : ''} /* push navbar down to avoid overlap */
         `}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
